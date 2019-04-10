@@ -26,7 +26,7 @@ final public  class LocaleManager: AutolocalizationObjectsStoreDelegate {
 
     // MARK: - Properties
 
-    static let shared: LocaleManager = LocaleManager()
+    public static let shared: LocaleManager = LocaleManager()
 
     // MARK: - Readonly properties
 
@@ -38,7 +38,6 @@ final public  class LocaleManager: AutolocalizationObjectsStoreDelegate {
         return store
     }
 
-    public private(set) var availableLocales: [Locale] = []
     public private(set) var currentLocale: Locale = Locale.current
 
     // MARK: - Private properties

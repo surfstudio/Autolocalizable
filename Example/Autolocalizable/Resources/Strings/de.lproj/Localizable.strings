@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Autolocalizable
+
+  Created by Virpik on 11/04/2019.
+  Copyright © 2019 CocoaPods. All rights reserved.
+*/
+
+// LanguagesViewController
+"LanguagesViewController.title" = "Sprachen";

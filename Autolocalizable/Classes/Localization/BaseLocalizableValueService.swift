@@ -1,6 +1,5 @@
 //
 //  LocalizableValueServie.swift
-//  Unicredit
 //
 //  Created by Anatoly Cherkasov on 13/03/2019.
 //  Copyright © 2019 Surf. All rights reserved.
@@ -28,7 +27,7 @@ final public class BaseLocalizableValueService: LocalizableValueService {
         if let bundle = bundles[locale] {
             return bundle
         }
-        let path = Bundle.main.path(forResource: locale.identifier, ofType: "lproj") ?? ""
+        let path = Bundle.main.path(forResource: locale.resourcesFileName, ofType: "lproj") ?? ""
         let bundle = Bundle(path: path) ?? Bundle.main
         bundles[locale] = bundle
         return bundle
