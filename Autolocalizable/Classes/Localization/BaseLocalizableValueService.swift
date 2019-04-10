@@ -9,7 +9,7 @@
 import Foundation
 
 /// String localization helpers
-final public class LocalizableValueService {
+final public class BaseLocalizableValueService: LocalizableValueService {
 
     /// In-memory caching
     private static var defaultBundle: Bundle = Bundle.main
@@ -17,7 +17,7 @@ final public class LocalizableValueService {
 
     /// Getting a localized string
     public func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: LocaleType) -> String {
-        let bundle = LocalizableValueService.getBundle(byLocale: locale)
+        let bundle = BaseLocalizableValueService.getBundle(byLocale: locale)
         let format = NSLocalizedString(key, tableName: table, bundle: bundle, comment: "")
         return String(format: format, locale: Locale.current, arguments: args)
     }

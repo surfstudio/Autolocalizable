@@ -28,7 +28,7 @@ public struct LocalizableStringItem {
 
     private var transforms: [((String) -> String)] = []
     private var declensionValue: Int?
-    private var service = LocalizableValueService()
+    private var service: LocalizableValueService = BaseLocalizableValueService()
 
     // MARK: - Initializing
 
@@ -42,6 +42,12 @@ public struct LocalizableStringItem {
         self.table = table
         self.key = key
         self.args = args
+    }
+
+    public func set(localizableService: LocalizableValueService) -> LocalizableStringItem {
+        var `self` = self
+        self.service = localizableService
+        return self
     }
 
     // MARK: - Transforms
@@ -87,7 +93,7 @@ public struct LocalizableStringItem {
     // MARK: - Helpers
 
     private func getValue() -> String {
-        // Remove dependency
+        // FIXME: - Remove dependency
         let locale = LocaleManager.shared.currentLocale.localeType
 
         if let decIntValue = declensionValue {

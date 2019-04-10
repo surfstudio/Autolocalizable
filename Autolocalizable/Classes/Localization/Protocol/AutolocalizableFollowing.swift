@@ -26,7 +26,7 @@ public extension AutolocalizableFollowing {
         }
     }
 
-    func unfollowAutolocalization() {
+    public func unfollowAutolocalization() {
         remove(forKey: autolocalizableFollowingKey)
     }
 }
