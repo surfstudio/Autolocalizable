@@ -50,7 +50,7 @@ viewController.localizedTitle = LocalizableStringItem("viewControllerTitle")
 final class MyClass: AutolocalizableFollowing {
 
 init() {
-followAutolocalization()
+	followAutolocalization()
 }
 
 // MARK: - AutolocalizableFollowing
@@ -80,7 +80,10 @@ func languageWasChanged(locale: LocaleType) {
 
 **Методы**
 
-`func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: LocaleType) -> String`
+```swift
+func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: LocaleType) -> String
+
+```
 
 Метод для получения переведенной строки на указанный язык, по ключу
 
