@@ -94,7 +94,7 @@ public struct LocalizableStringItem {
 
     private func getValue() -> String {
         // FIXME: - Remove dependency
-        let locale = LocaleManager.shared.currentLocale.localeType
+        let locale = LocaleManager.shared.currentLocale
 
         if let decIntValue = declensionValue {
             let declensionType = StringDecline(count: decIntValue)

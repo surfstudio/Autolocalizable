@@ -11,13 +11,13 @@ import UIKit
 /// Activate AutoLocalizableField for UIButton
 extension UIButton: AutoLocalizableField, AutoLocalizableAttributedField {
 
-    public func languageWasChanged(locale: LocaleType, localizableString: LocalizableStringItem?) {
+    public func languageWasChanged(locale: Locale, localizableString: LocalizableStringItem?) {
         setTitle(localizableString?.value, for: .normal)
         superview?.setNeedsLayout()
         superview?.layoutIfNeeded()
     }
 
-    public func languageWasChanged(locale: LocaleType, localizableAttributedString: LocalizableAttributedStringItem?) {
+    public func languageWasChanged(locale: Locale, localizableAttributedString: LocalizableAttributedStringItem?) {
         setAttributedTitle(localizableAttributedString?.value, for: .normal)
         superview?.setNeedsLayout()
         superview?.layoutIfNeeded()

@@ -13,7 +13,7 @@ public protocol AutoLocalizableField: AutoLocalizableFields {
 
     var localized: LocalizableStringItem? { get set }
 
-    func languageWasChanged(locale: LocaleType, localizableString: LocalizableStringItem?)
+    func languageWasChanged(locale: Locale, localizableString: LocalizableStringItem?)
 }
 
 public extension AutoLocalizableField {

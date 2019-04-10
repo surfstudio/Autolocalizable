@@ -1,5 +1,5 @@
 //
-//  LocaleType.swift
+//  Locale.swift
 //  Unicredit
 //
 //  Created by Anatoly Cherkasov on 20/02/2019.
@@ -8,25 +8,57 @@
 
 import Foundation
 
-public enum LocaleType: String {
+//public protocol Locale: Equatable {
+//
+////    static var `default`: Self { get }
+//
+//    var locale: Locale { get }
+//
+//    var rawValue: String { get }
+//
+//    init(raw: String)
+//
+//}
 
-    case en
-    case ru
+//public enum Locale: String {
+//
+//    case en
+//    case ru
+//
+//    init(raw: String) {
+//        self = Locale(rawValue: raw) ?? .default
+//    }
+//
+//}
 
-    init(raw: String) {
-        self = LocaleType(rawValue: raw) ?? .default
-    }
+//public extension Locale {
+//
+//    static var `default`: Locale {
+//        return .ru
+//    }
+//
+//    var locale: Locale {
+//        return Locale(identifier: self.rawValue)
+//    }
+//
+//}
 
-}
-
-public extension LocaleType {
-
-    static var `default`: LocaleType {
-        return .ru
-    }
-
-    var locale: Locale {
-        return Locale(identifier: self.rawValue)
-    }
-
-}
+//extension Locale: Locale {
+//
+////    public static var `default`: Locale {
+////        return Locale.current
+////    }
+//
+//    public var locale: Locale {
+//        self
+//    }
+//
+//    public var rawValue: String {
+//        self.languageCode ?? ""
+//    }
+//
+//    public init(raw: String) {
+//        self.init(identifier: raw)
+//    }
+//
+//}

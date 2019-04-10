@@ -11,13 +11,13 @@ import UIKit
 /// Activate AutoLocalizableField for UILabel
 extension UILabel: AutoLocalizableField, AutoLocalizableAttributedField {
 
-    public func languageWasChanged(locale: LocaleType, localizableString: LocalizableStringItem?) {
+    public func languageWasChanged(locale: Locale, localizableString: LocalizableStringItem?) {
         text = localizableString?.value
         superview?.setNeedsLayout()
         superview?.layoutIfNeeded()
     }
 
-    public func languageWasChanged(locale: LocaleType, localizableAttributedString: LocalizableAttributedStringItem?) {
+    public func languageWasChanged(locale: Locale, localizableAttributedString: LocalizableAttributedStringItem?) {
         attributedText = localizableAttributedString?.value
         superview?.setNeedsLayout()
         superview?.layoutIfNeeded()

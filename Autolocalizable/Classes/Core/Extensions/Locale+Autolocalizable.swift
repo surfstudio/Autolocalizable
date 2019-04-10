@@ -10,9 +10,9 @@ import Foundation
 
 public extension Locale {
 
-    var localeType: LocaleType {
-        let id = self.identifier.split(separator: "_").first?.lowercased() ?? LocaleType.default.rawValue
-        return LocaleType(raw: id)
-    }
+//    var Locale: Locale {
+//        let id = self.identifier.split(separator: "_").first?.lowercased() ?? Locale.default.rawValue
+//        return Locale(raw: id)
+//    }
 
 }

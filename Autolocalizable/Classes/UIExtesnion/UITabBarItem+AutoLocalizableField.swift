@@ -11,7 +11,7 @@ import UIKit
 /// Activate AutoLocalizableField for UITabBarItem
 extension UITabBarItem: AutoLocalizableField {
 
-    public func languageWasChanged(locale: LocaleType, localizableString: LocalizableStringItem?) {
+    public func languageWasChanged(locale: Locale, localizableString: LocalizableStringItem?) {
         title = localizableString?.value
     }
 

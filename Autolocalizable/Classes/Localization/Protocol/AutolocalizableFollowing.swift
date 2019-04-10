@@ -9,7 +9,7 @@
 import Foundation
 
 /// Allows you to bind the class to the autolocalization system
-/// The class must implement the method `func languageWasChanged(locale: LocaleType)`
+/// The class must implement the method `func languageWasChanged(locale: Locale)`
 public protocol AutolocalizableFollowing: Autolocalizable, AutoLocalizableFields {
 
 }

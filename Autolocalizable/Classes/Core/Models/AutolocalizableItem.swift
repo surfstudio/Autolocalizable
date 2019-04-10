@@ -12,7 +12,7 @@ final public class AutolocalizableItem<Item>: Autolocalizable, Keyable {
 
     // MARK: - Nested types
 
-    public typealias LocalizableItemHandler = ((_ locale: LocaleType, _ item: Item) -> Void)
+    public typealias LocalizableItemHandler = ((_ locale: Locale, _ item: Item) -> Void)
 
     // MARK: - Properties
 
@@ -30,7 +30,7 @@ final public class AutolocalizableItem<Item>: Autolocalizable, Keyable {
 
     // MARK: - AutoLocalizable
 
-    public func languageWasChanged(locale: LocaleType) {
+    public func languageWasChanged(locale: Locale) {
         action(locale, item)
     }
 

@@ -36,7 +36,7 @@ extension UIViewController: AutoLocalizableFields {
     }
 
     /// Supporting blocks autolocalization following
-    public func autoLocalizable(handler: @escaping ((LocaleType) -> Void)) {
+    public func autoLocalizable(handler: @escaping ((Locale) -> Void)) {
         let item = AutolocalizableItem(item: Void()) { locale, _ in
             handler(locale)
         }

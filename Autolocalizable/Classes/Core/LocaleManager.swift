@@ -9,7 +9,7 @@
 import Foundation
 
 /// Returns the object to be stored in memory at the desired time
-public func autoLocalizable(anchor: AnyObject, handler: @escaping ((LocaleType) -> Void)) {
+public func autoLocalizable(anchor: AnyObject, handler: @escaping ((Locale) -> Void)) {
     let item = AutolocalizableItem(item: Void()) { locale, _ in
         handler(locale)
     }
@@ -38,7 +38,7 @@ final public  class LocaleManager: AutolocalizationObjectsStoreDelegate {
         return store
     }
 
-    public private(set) var availableLocales: [LocaleType] = [.en, .ru]
+    public private(set) var availableLocales: [Locale] = []
     public private(set) var currentLocale: Locale = Locale.current
 
     // MARK: - Private properties
@@ -51,9 +51,9 @@ final public  class LocaleManager: AutolocalizationObjectsStoreDelegate {
     }
 
     /// Setup current locale
-    public func setAs(current locale: LocaleType) {
+    public func setAs(current locale: Locale) {
         saveCurrentLocale(locale: locale)
-        currentLocale = locale.locale
+        currentLocale = locale
 
         store.items.forEach { element in
             DispatchQueue.main.async {
@@ -65,18 +65,18 @@ final public  class LocaleManager: AutolocalizationObjectsStoreDelegate {
     // MARK: - AutolocalizationObjectsStoreDelegate
 
     public func newRegistered(item: Autolocalizable) {
-        item.languageWasChanged(locale: currentLocale.localeType)
+        item.languageWasChanged(locale: currentLocale)
     }
 
     // MARK: - Private helpers
 
-    private func saveCurrentLocale(locale: LocaleType) {
-        UserDefaults.standard.set(locale.rawValue, forKey: Constants.userDefaultKey)
+    private func saveCurrentLocale(locale: Locale) {
+        UserDefaults.standard.set(locale.identifier, forKey: Constants.userDefaultKey)
     }
 
     private func restoreCurrentLocale() {
         let rawValue = UserDefaults.standard.string(forKey: Constants.userDefaultKey) ?? ""
-        setAs(current: LocaleType(raw: rawValue))
+        setAs(current: Locale(identifier: rawValue))
     }
 
 }
