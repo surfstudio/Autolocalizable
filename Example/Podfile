@@ -2,7 +2,6 @@ use_frameworks!
 
 target 'Autolocalizable_Example' do
   pod 'Autolocalizable', :path => '../'
-  pod 'ReactiveDataDisplayManager', :git=>"https://github.com/surfstudio/ReactiveDataDisplayManager", :commit=>"32080e06c38ee3a077898388d73dc21a5a29cc28"
   target 'Autolocalizable_Tests' do
     inherit! :search_paths
 
