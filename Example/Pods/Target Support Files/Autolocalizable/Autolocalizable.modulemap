@@ -1,6 +1,0 @@
-framework module Autolocalizable {
-  umbrella header "Autolocalizable-umbrella.h"
-
-  export *
-  module * { export * }
-}
