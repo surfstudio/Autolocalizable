@@ -6,5 +6,11 @@
   Copyright © 2019 CocoaPods. All rights reserved.
 */
 
+// Langs
+"en_US" = "Aнглийский";
+"ru_RU" = "Русский";
+"fr_FR" = "Французский";
+"de_DE" = "Немецкий";
+
 // LanguagesViewController
 "LanguagesViewController.title" = "Языки";

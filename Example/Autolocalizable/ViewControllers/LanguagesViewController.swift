@@ -24,7 +24,13 @@ final class LanguagesViewController: UIViewController {
 
         /// Autolocalizable ViewController.title
         localizedTitle = Localizable.LanguagesViewController_Title
-
+/**
+        tabBarItem = UITabBarItem(
+            title: Localizable.LanguagesViewController_Title.value,
+            image: UIImage(named: "ic_star_grey"),
+            selectedImage: nil
+        )
+**/
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -37,8 +43,15 @@ extension LanguagesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let locale = availableLangs[indexPath.row]
         LocaleManager.shared.setAs(current: locale)
+
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
     }
 
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .none
+    }
 }
 
 extension LanguagesViewController: UITableViewDataSource {
@@ -56,7 +69,7 @@ extension LanguagesViewController: UITableViewDataSource {
         let cell = UITableViewCell()
         let locale = availableLangs[indexPath.row]
         cell.textLabel?.localized = LocalizableStringItem(locale.identifier)
-        cell.selectionStyle = .blue
+        cell.selectionStyle = .none
         return cell
     }
 }
