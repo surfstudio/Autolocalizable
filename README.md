@@ -17,6 +17,16 @@ git, cherkasov@surfstudio.ru
 
 Autolocalizable is available under the MIT license. See the LICENSE file for more info.
 
+## Что бы избежать лишних импортов
+
+В `Bridging-Header.h` проекта стоит тобавить строчку: 
+
+```objective-c
+
+#import "Autolocalizable/Autolocalizable-Swift.h"
+
+```
+
 ## Базовые возможности
 
 - Держит значение активного языка 
