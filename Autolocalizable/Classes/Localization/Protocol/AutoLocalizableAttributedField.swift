@@ -22,7 +22,7 @@ public extension AutoLocalizableAttributedField {
         return "localizedAttributedKey"
     }
 
-    public var localizedAttributed: LocalizableAttributedStringItem? {
+    var localizedAttributed: LocalizableAttributedStringItem? {
         get {
             return getItem(key: localizedAttributedKey)
         }

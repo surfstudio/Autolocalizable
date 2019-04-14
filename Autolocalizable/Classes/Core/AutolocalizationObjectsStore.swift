@@ -63,7 +63,7 @@ final class AutolocalizationObjectsStore: AutolocalizationObjectsFinder,
             return
         }
 
-        let foundIndex = store.items.index {
+        let foundIndex = store.items.firstIndex {
             $0 === item
         }
 

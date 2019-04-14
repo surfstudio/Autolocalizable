@@ -21,7 +21,7 @@ public extension AutoLocalizableField {
         return "localized"
     }
 
-    public var localized: LocalizableStringItem? {
+    var localized: LocalizableStringItem? {
         get {
             return getItem(key: localizedKey)
         }

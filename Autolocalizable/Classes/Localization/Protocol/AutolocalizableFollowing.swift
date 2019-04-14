@@ -19,13 +19,13 @@ public extension AutolocalizableFollowing {
         return "autolocalizableFollowingKey"
     }
 
-    public func followAutolocalization() {
+    func followAutolocalization() {
         registration(item: Void()) { [weak self] locale, _ in
             self?.languageWasChanged(locale: locale)
         }
     }
 
-    public func unfollowAutolocalization() {
+    func unfollowAutolocalization() {
         remove(forKey: autolocalizableFollowingKey)
     }
 }
