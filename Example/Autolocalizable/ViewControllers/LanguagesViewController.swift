@@ -24,6 +24,10 @@ final class LanguagesViewController: UIViewController {
 
         /// Autolocalizable ViewController.title
         localizedTitle = Localizable.LanguagesViewController_Title
+        localizedTitle = LocalizableStringItem(localizationsDictionary: [
+            Locale(identifier: "en_US"): "Title1_en_US",
+            Locale(identifier: "ru_RU"): "Title_ru_RU"
+        ])
 /**
         tabBarItem = UITabBarItem(
             title: Localizable.LanguagesViewController_Title.value,
