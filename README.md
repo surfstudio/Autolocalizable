@@ -11,7 +11,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Author
 
-git, cherkasov@surfstudio.ru
+[Anatoly Cherkasov](https://github.com/virpik), cherkasov@surfstudio.ru
+
+## Collaborators
+
+[Alexander Filimonov](https://github.com/alexfilimon)
 
 ## License
 
