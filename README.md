@@ -38,7 +38,7 @@ Autolocalizable is available under the MIT license. See the LICENSE file for mor
 - Отслеживание смены языка таргетно 
 - Поддержка NSAttributtedString 
 - Локализация с учетом склонений и различных трансформаций (_uppercased_, _capitalizingFirstLetter_)
-- Горячее подключение таблиц для локализации (Например тескт может приходить с сервера) (см протокол [LocalizableValueService](LocalizableValueService))
+- Горячее подключение таблиц для локализации (Например текст может приходить с сервера) (см протокол [LocalizableValueService](LocalizableValueService))
 
 ## Примеры использования
 
@@ -63,15 +63,15 @@ viewController.localizedTitle = LocalizableStringItem("viewControllerTitle")
 ```swift
 final class MyClass: AutolocalizableFollowing {
 
-init() {
+    init() {
 	followAutolocalization()
-}
+    }
 
-// MARK: - AutolocalizableFollowing
+    // MARK: - AutolocalizableFollowing
 
-func languageWasChanged(locale: LocaleType) {
-/// ... code    
-}
+    func languageWasChanged(locale: LocaleType) {
+        /// ... code    
+    }
 
 }
 
@@ -90,7 +90,7 @@ func languageWasChanged(locale: LocaleType) {
 
 #### LocalizableValueService
 
-Протоко, для чтения .strings файлов запрашиваемого языка
+Протокол, для чтения .strings файлов запрашиваемого языка
 
 **Методы**
 
@@ -103,7 +103,7 @@ func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: Locale
 
 _table_ - Таблица _.strings_ (По умолчанию Localizable.strings)
 
-_key_ - Ключь строки, для которой требуется перевод (Например "Login.title")
+_key_ - Ключ строки, для которой требуется перевод (Например "Login.title")
 
 _args_ - Список аргументов для форматирования (Необходимо указывать если в перевод подставляются данные через %@)
 
