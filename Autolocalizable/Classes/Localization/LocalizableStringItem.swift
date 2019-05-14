@@ -121,9 +121,14 @@ public struct LocalizableStringItem {
 /// CustomLocalizableValueService supporting
 public extension LocalizableStringItem {
 
-    init(args: [CVarArg] = [], localizationsDictionary: [Locale: String]) {
+    init(args: [CVarArg] = [], localizationsDictionary: [Locale: String], defaultValue: String) {
         self.init("", args)
-        self = set(localizableService: CustomLocalizableValueService(with: localizationsDictionary))
+        self = set(
+            localizableService: CustomLocalizableValueService(
+                with: localizationsDictionary,
+                defaultValue: defaultValue
+            )
+        )
     }
 
 }
