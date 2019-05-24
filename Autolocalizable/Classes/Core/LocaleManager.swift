@@ -74,7 +74,10 @@ final public  class LocaleManager: AutolocalizationObjectsStoreDelegate {
     }
 
     private func restoreCurrentLocale() {
-        guard let rawValue = UserDefaults.standard.string(forKey: Constants.userDefaultKey) else {
+        guard
+            let rawValue = UserDefaults.standard.string(forKey: Constants.userDefaultKey),
+            !rawValue.isEmpty
+        else {
             setAs(current: Locale.current)
             return
         }
