@@ -27,6 +27,24 @@ public struct LocalizableAttributedStringItem {
         self.item = item
         self.attributed = attributed
     }
+    
+    // MARK: - Transforms
+
+    public func add(transform: @escaping ((NSAttributedString) -> NSAttributedString)) -> LocalizableAttributedStringItem {
+        var `self` = self
+        self.transforms.append(transform)
+        return self
+    }
+
+    public func add(attributes: [NSAttributedString.Key: Any], to range: NSRange) -> LocalizableAttributedStringItem {
+        var `self` = self
+        self.transforms.append { (attributed) -> NSAttributedString in
+            let mutableAttributed = NSMutableAttributedString(attributedString: attributed)
+            mutableAttributed.addAttributes(attributes, range: range)
+            return mutableAttributed
+        }
+        return self
+    }
 
     // MARK: - Helpers
 
