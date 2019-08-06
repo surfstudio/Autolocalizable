@@ -37,7 +37,7 @@ public struct LocalizableStringItem {
         self.args = args
     }
 
-    public init(_ table: String, _ key: String, _ args: CVarArg...) {
+    public init(table: String, _ key: String, _ args: CVarArg...) {
         self.table = table
         self.key = key
         self.args = args

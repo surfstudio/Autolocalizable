@@ -32,10 +32,10 @@ import Foundation
   {% endif %}
   {% if string.types %}
   {{accessModifier}} static func {{string.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}({% call parametersBlock string.types %}) -> LocalizableStringItem {
-    return LocalizableStringItem("{{table}}", "{{string.key}}", {% call argumentsBlock string.types %})
+    return LocalizableStringItem(table: "{{table}}", "{{string.key}}", {% call argumentsBlock string.types %})
   }
   {% else %}
-    {{accessModifier}} static var {{string.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}: LocalizableStringItem { return LocalizableStringItem("{{table}}", "{{string.key}}") }
+    {{accessModifier}} static var {{string.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}: LocalizableStringItem { return LocalizableStringItem(table: "{{table}}", "{{string.key}}") }
   {% endif %}
   {% endfor %}
   {% for child in item.children %}
