@@ -9,8 +9,8 @@ import Foundation
 
 public struct LocalizableStringItem {
 
-    private enum Constants {
-        static let table = "Localizable"
+    public enum Constants {
+        public static let table = "Localizable"
     }
 
     // MARK: - Properties
@@ -31,13 +31,7 @@ public struct LocalizableStringItem {
 
     // MARK: - Initializing
 
-    public init(_ key: String = "", _ args: CVarArg...) {
-        self.table = Constants.table
-        self.key = key
-        self.args = args
-    }
-
-    public init(_ table: String, _ key: String, _ args: CVarArg...) {
+    public init(table: String = Constants.table, _ key: String = "", _ args: CVarArg...) {
         self.table = table
         self.key = key
         self.args = args
