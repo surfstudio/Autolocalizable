@@ -31,6 +31,8 @@ Autolocalizable is available under the MIT license. See the LICENSE file for mor
 
 ```
 
+Если вы будете использовать Swift Package Manager, тогда этот трюк не сработает.
+
 ## Базовые возможности
 
 - Держит значение активного языка 
