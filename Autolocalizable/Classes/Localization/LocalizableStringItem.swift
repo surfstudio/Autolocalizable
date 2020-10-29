@@ -39,6 +39,13 @@ public struct LocalizableStringItem {
         self.bundle = bundle
     }
 
+    public init(table: String = Constants.table, _ key: String = "", _ args: CVarArg...) {
+        self.table = table
+        self.key = key
+        self.args = args
+        self.bundle = Bundle.main
+    }
+
     public func set(localizableService: LocalizableValueService) -> LocalizableStringItem {
         var `self` = self
         self.service = localizableService
