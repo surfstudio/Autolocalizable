@@ -14,7 +14,7 @@ final public class BaseLocalizableValueService: LocalizableValueService {
     private static var bundles: [Locale: Bundle] = [:]
 
     /// Getting a localized string
-    public func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: Locale, _ bundle: Bundle = Bundle.main) -> String {
+    public func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: Locale, _ bundle: Bundle) -> String {
         var rightBundle = bundle
         if bundle == Bundle.main {
             rightBundle = BaseLocalizableValueService.getBundle(byLocale: locale)

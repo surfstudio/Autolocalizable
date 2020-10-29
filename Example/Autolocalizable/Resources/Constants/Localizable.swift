@@ -10,5 +10,5 @@ import Foundation
 import Autolocalizable
 
 enum Localizable {
-    static let LanguagesViewController_Title = LocalizableStringItem("LanguagesViewController.title")
+    static let LanguagesViewController_Title = LocalizableStringItem("LanguagesViewController.title", bundle: Bundle.main)
 }

@@ -68,7 +68,7 @@ extension LanguagesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let locale = availableLangs[indexPath.row]
-        cell.textLabel?.localized = LocalizableStringItem(locale.identifier)
+        cell.textLabel?.localized = LocalizableStringItem(locale.identifier, bundle: Bundle.main)
         cell.selectionStyle = .none
         return cell
     }

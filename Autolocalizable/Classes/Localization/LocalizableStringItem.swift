@@ -32,7 +32,7 @@ public struct LocalizableStringItem {
 
     // MARK: - Initializing
 
-    public init(table: String = Constants.table, _ key: String = "", _ args: CVarArg..., bundle: Bundle = Bundle.main) {
+    public init(table: String = Constants.table, _ key: String = "", _ args: CVarArg..., bundle: Bundle) {
         self.table = table
         self.key = key
         self.args = args
