@@ -24,6 +24,7 @@ public struct LocalizableStringItem {
     private let table: String
     private let key: String
     private let args: [CVarArg]
+    private let bundle: Bundle
 
     private var transforms: [((String) -> String)] = []
     private var declensionValue: Int?
@@ -31,10 +32,11 @@ public struct LocalizableStringItem {
 
     // MARK: - Initializing
 
-    public init(table: String = Constants.table, _ key: String = "", _ args: CVarArg...) {
+    public init(table: String = Constants.table, _ key: String = "", _ args: CVarArg..., bundle: Bundle = Bundle.main) {
         self.table = table
         self.key = key
         self.args = args
+        self.bundle = bundle
     }
 
     public func set(localizableService: LocalizableValueService) -> LocalizableStringItem {
@@ -93,14 +95,14 @@ public struct LocalizableStringItem {
             let declensionType = StringDecline(count: decIntValue)
             let newKey = key + declensionType.key
 
-            let value = service.localized(table, newKey, args, locale: locale)
+            let value = service.localized(table, newKey, args, locale: locale, bundle)
 
             if value != newKey {
                 return applyTransforms(string: value)
             }
         }
 
-        let value = service.localized(table, key, args, locale: locale)
+        let value = service.localized(table, key, args, locale: locale, bundle)
         return applyTransforms(string: value)
     }
 
@@ -116,7 +118,7 @@ public struct LocalizableStringItem {
 public extension LocalizableStringItem {
 
     init(args: [CVarArg] = [], localizationsDictionary: [Locale: String], defaultValue: String) {
-        self.init("", args)
+        self.init("", args, bundle: Bundle.main)
         self = set(
             localizableService: CustomLocalizableValueService(
                 with: localizationsDictionary,

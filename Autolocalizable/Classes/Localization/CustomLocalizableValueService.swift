@@ -25,7 +25,7 @@ public final class CustomLocalizableValueService: LocalizableValueService {
 
     // MARK: - LocalizableValueService
 
-    public func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: Locale) -> String {
+    public func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: Locale, _ bundle: Bundle = Bundle.main) -> String {
         let format = dictionary[locale.resourcesFileName] ?? defaultValue
         return String(format: format, locale: locale, arguments: args)
     }

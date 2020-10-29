@@ -16,6 +16,6 @@ public protocol LocalizableValueService {
     /// - Parameter args: List of options for formatting a string
     /// - Parameter locale: The locale of the language for which you want to localize
     /// - Returns: Localized string
-    func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: Locale) -> String
+    func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: Locale,  _ bundle: Bundle) -> String
 
 }

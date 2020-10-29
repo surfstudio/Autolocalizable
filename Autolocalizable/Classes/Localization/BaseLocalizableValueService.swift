@@ -11,14 +11,17 @@ import Foundation
 final public class BaseLocalizableValueService: LocalizableValueService {
 
     /// In-memory caching
-    private static var defaultBundle: Bundle = Bundle.main
     private static var bundles: [Locale: Bundle] = [:]
 
     /// Getting a localized string
-    public func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: Locale) -> String {
-        let bundle = BaseLocalizableValueService.getBundle(byLocale: locale)
-        let format = NSLocalizedString(key, tableName: table, bundle: bundle, comment: "")
-        return String(format: format, locale: Locale.current, arguments: args)
+    public func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: Locale, _ bundle: Bundle = Bundle.main) -> String {
+        var rightBundle = bundle
+        if bundle == Bundle.main {
+            rightBundle = BaseLocalizableValueService.getBundle(byLocale: locale)
+        }
+
+        let format = NSLocalizedString(key, tableName: table, bundle: rightBundle, comment: "")
+        return String(format: format, locale: locale, arguments: args)
     }
 
     // MARK: - Helpers
