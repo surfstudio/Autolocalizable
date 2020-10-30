@@ -82,7 +82,7 @@ final class MyClass: AutolocalizableFollowing {
 ## SwiftGen
 
 Доступен шаблон для подключения автоматической генерации через SwiftGen.
-Шаблон находится в корне репозитория (swiftgen-templates).
+Шаблон находится в корне репозитория (swiftgen-templates) и поддерживает генерацию в отдельном package SPM
 Узнать про установку кастомных шаблонов можно в репозитории проекта [SwiftGen](https://github.com/SwiftGen/SwiftGen#choosing-your-template)
 
 Если генерация успешно интегрирована, доступен подобный синтаксис: 
@@ -96,10 +96,12 @@ final class MyClass: AutolocalizableFollowing {
 
 **Методы**
 
+
 ```swift
-func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: LocaleType) -> String
+func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: LocaleType, bundle: Bundle) -> String
 
 ```
+
 
 Метод для получения переведенной строки на указанный язык, по ключу
 
@@ -110,6 +112,9 @@ _key_ - Ключ строки, для которой требуется пере
 _args_ - Список аргументов для форматирования (Необходимо указывать если в перевод подставляются данные через %@)
 
 _locale_ - Требуемый язык
+
+_bundle_ - Bundle содержащий ресурсы
+
 
 Базовая реализация протокола доступна в классе `BaseLocalizableValueService`
 
@@ -128,17 +133,15 @@ private(set) var value: String
 
 **Конструкторы**
 
-```swift
-init(_ key: String = "", _ args: CVarArg...)
-
-```
-
-_key_ - Ключ локализации
-
-_args_ - Список аргументов для форматирования
 
 ```swift
 init(_ table: String, _ key: String, _ args: CVarArg...)
+
+```
+и
+
+```swift
+init(_ table: String, _ key: String, _ args: CVarArg......, bundle: Bundle)
 
 ```
 
@@ -147,6 +150,9 @@ _table_ - Название .strings таблицы
 _key_ - Ключ локализации
 
 _args_ - Список аргументов для форматирования
+
+_bundle_ - Bundle содержащий ресурсы, по умолчанию Bundle.main, но может быть изменен, если например ресурсы вынесены в spm
+
 
 **Методы**
 
