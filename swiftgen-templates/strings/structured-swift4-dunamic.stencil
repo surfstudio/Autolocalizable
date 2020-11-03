@@ -33,10 +33,10 @@ import Autolocalizable
   {% endif %}
   {% if string.types %}
   {{accessModifier}} static func {{string.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}({% call parametersBlock string.types %}) -> LocalizableStringItem {
-    return {{enumName}}.create("{{table}}", "{{string.key}}", {% call argumentsBlock string.types %})
+    return LocalizableStringItem(table: "{{table}}", "{{string.key}}", {% call argumentsBlock string.types %}, bundle: {{param.bundle|default:"BundleToken.bundle"}})
   }
   {% else %}
-    {{accessModifier}} static var {{string.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}: LocalizableStringItem { return {{enumName}}.create("{{table}}", "{{string.key}}") }
+    {{accessModifier}} static var {{string.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}: LocalizableStringItem { return LocalizableStringItem(table: "{{table}}", "{{string.key}}", bundle: {{param.bundle|default:"BundleToken.bundle"}}) }
   {% endif %}
   {% endfor %}
   {% for child in item.children %}
@@ -66,12 +66,7 @@ import Autolocalizable
 
 // MARK: - Implementation Details
 
-extension {{enumName}} {
-  private static func create(_ table: String, _ key: String, _ args: CVarArg...) -> LocalizableStringItem {
-    let bundle = {{param.bundle|default:"BundleToken.bundle"}}
-    return LocalizableStringItem(table: table, key, args, bundle: bundle)
-  }
-}
+{% if not param.bundle and not param.lookupFunction %}
 
 // swiftlint:disable convenience_type
 private final class BundleToken {
@@ -84,7 +79,7 @@ private final class BundleToken {
   }()
 }
 // swiftlint:enable convenience_type
-
+{% endif %}
 {% else %}
 // No string found
 {% endif %}
