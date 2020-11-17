@@ -27,23 +27,23 @@ public struct LocalizableAttributedStringItem {
         self.item = item
         self.attributed = attributed
     }
-    
+
     // MARK: - Transforms
 
     public func add(transform: @escaping ((NSAttributedString) -> NSAttributedString)) -> LocalizableAttributedStringItem {
-        var `self` = self
-        self.transforms.append(transform)
+        var helper = self
+        helper.transforms.append(transform)
         return self
     }
 
     public func add(attributes: [NSAttributedString.Key: Any], to range: NSRange) -> LocalizableAttributedStringItem {
-        var `self` = self
-        self.transforms.append { (attributed) -> NSAttributedString in
+        var helper = self
+        helper.transforms.append { (attributed) -> NSAttributedString in
             let mutableAttributed = NSMutableAttributedString(attributedString: attributed)
             mutableAttributed.addAttributes(attributes, range: range)
             return mutableAttributed
         }
-        return self
+        return helper
     }
 
     // MARK: - Helpers
@@ -55,7 +55,7 @@ public struct LocalizableAttributedStringItem {
 
     private func applyTransforms(string: String) -> NSAttributedString {
         let attributedString = NSAttributedString(string: string, attributes: attributed)
-        return transforms.reduce(attributedString) { (str, transform ) -> NSAttributedString in
+        return transforms.reduce(attributedString) { (str, transform) -> NSAttributedString in
             return transform(str)
         }
     }

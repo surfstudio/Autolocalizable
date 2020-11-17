@@ -47,39 +47,39 @@ public struct LocalizableStringItem {
     }
 
     public func set(localizableService: LocalizableValueService) -> LocalizableStringItem {
-        var `self` = self
-        self.service = localizableService
-        return self
+        var helper = self
+        helper.service = localizableService
+        return helper
     }
 
     // MARK: - Transforms
 
     public func add(transform: @escaping ((String) -> String)) -> LocalizableStringItem {
-        var `self` = self
-        self.transforms.append(transform)
-        return self
+        var helper = self
+        helper.transforms.append(transform)
+        return helper
     }
 
     public func addDeclension(_ value: Int?) -> LocalizableStringItem {
-        var `self` = self
-        self.declensionValue = value
-        return self
+        var helper = self
+        helper.declensionValue = value
+        return helper
     }
 
     public func uppercased() -> LocalizableStringItem {
-        return self.add {
+        return add {
             return $0.uppercased()
         }
     }
 
     public func lowercased() -> LocalizableStringItem {
-        return self.add {
+        return add {
             return $0.lowercased()
         }
     }
 
     public func capitalizingFirstLetter() -> LocalizableStringItem {
-        return self.add {
+        return add {
             let first = String($0.prefix(1)).capitalized
             let other = String($0.dropFirst())
             return first + other
@@ -114,7 +114,7 @@ public struct LocalizableStringItem {
     }
 
     private func applyTransforms(string: String) -> String {
-        return transforms.reduce(string) { (str, transform ) -> String in
+        return transforms.reduce(string) { (str, transform) -> String in
             return transform(str)
         }
     }
