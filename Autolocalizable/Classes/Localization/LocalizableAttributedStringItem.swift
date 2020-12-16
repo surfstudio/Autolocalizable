@@ -33,7 +33,7 @@ public struct LocalizableAttributedStringItem {
     public func add(transform: @escaping ((NSAttributedString) -> NSAttributedString)) -> LocalizableAttributedStringItem {
         var helper = self
         helper.transforms.append(transform)
-        return self
+        return helper
     }
 
     public func add(attributes: [NSAttributedString.Key: Any], to range: NSRange) -> LocalizableAttributedStringItem {
