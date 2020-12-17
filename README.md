@@ -141,7 +141,7 @@ init(_ table: String, _ key: String, _ args: CVarArg...)
 и
 
 ```swift
-init(_ table: String, _ key: String, _ args: CVarArg......, bundle: Bundle)
+init(_ table: String, _ key: String, _ args: CVarArg..., bundle: Bundle)
 
 ```
 
@@ -284,5 +284,4 @@ func languageWasChanged(locale: LocaleType)`
 ```
 
 Для отслеживания смены языка вызывать `followAutolocalization()`, для отмены `unfollowAutolocalization` 
-
 
