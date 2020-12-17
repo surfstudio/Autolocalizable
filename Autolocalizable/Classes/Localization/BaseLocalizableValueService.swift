@@ -11,26 +11,26 @@ import Foundation
 final public class BaseLocalizableValueService: LocalizableValueService {
 
     /// In-memory caching
-    private static var defaultBundle: Bundle = Bundle.main
     private static var bundles: [Locale: Bundle] = [:]
 
     /// Getting a localized string
-    public func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: Locale) -> String {
-        let bundle = BaseLocalizableValueService.getBundle(byLocale: locale)
-        let format = NSLocalizedString(key, tableName: table, bundle: bundle, comment: "")
-        return String(format: format, locale: Locale.current, arguments: args)
+    public func localized(_ table: String, _ key: String, _ args: [CVarArg], locale: Locale, _ bundle: Bundle) -> String {
+        let rightBundle =  BaseLocalizableValueService.identifyBundle(bundle, byLocale: locale)
+        let format = NSLocalizedString(key, tableName: table, bundle: rightBundle, comment: "")
+        return String(format: format, locale: locale, arguments: args)
     }
 
     // MARK: - Helpers
 
-    private static func getBundle(byLocale locale: Locale) -> Bundle {
-        if let bundle = bundles[locale] {
-            return bundle
+    private static func identifyBundle(_ bundle: Bundle, byLocale locale: Locale) -> Bundle {
+        if let cachedBundle = bundles[locale] {
+            return cachedBundle
         }
-        let path = Bundle.main.path(forResource: locale.resourcesFileName, ofType: "lproj") ?? ""
-        let bundle = Bundle(path: path) ?? Bundle.main
-        bundles[locale] = bundle
-        return bundle
+        let path = bundle.path(forResource: locale.resourcesFileName, ofType: "lproj") ?? ""
+        let concreteBundle = Bundle(path: path) ?? bundle
+        bundles[locale] = concreteBundle
+        return concreteBundle
     }
 
 }
+

@@ -4,6 +4,7 @@
 {% if tables.count > 0 %}
 {% set accessModifier %}{% if param.publicAccess %}public{% else %}internal{% endif %}{% endset %}
 import Foundation
+import Autolocalizable
 
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
@@ -32,10 +33,10 @@ import Foundation
   {% endif %}
   {% if string.types %}
   {{accessModifier}} static func {{string.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}({% call parametersBlock string.types %}) -> LocalizableStringItem {
-    return LocalizableStringItem(table: "{{table}}", "{{string.key}}", {% call argumentsBlock string.types %})
+    return LocalizableStringItem(table: "{{table}}", "{{string.key}}", {% call argumentsBlock string.types %}, bundle: {{param.bundle|default:"BundleToken.bundle"}})
   }
   {% else %}
-    {{accessModifier}} static var {{string.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}: LocalizableStringItem { return LocalizableStringItem(table: "{{table}}", "{{string.key}}") }
+    {{accessModifier}} static var {{string.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}: LocalizableStringItem { return LocalizableStringItem(table: "{{table}}", "{{string.key}}", bundle: {{param.bundle|default:"BundleToken.bundle"}}) }
   {% endif %}
   {% endfor %}
   {% for child in item.children %}
@@ -59,11 +60,26 @@ import Foundation
   {% call recursiveBlock tables.first.name tables.first.levels %}
   {% endif %}
 }
+
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name
 
 // MARK: - Implementation Details
 
+{% if not param.bundle and not param.lookupFunction %}
+
+// swiftlint:disable convenience_type
+private final class BundleToken {
+  static let bundle: Bundle = {
+    #if SWIFT_PACKAGE
+    return Bundle.module
+    #else
+    return Bundle(for: BundleToken.self)
+    #endif
+  }()
+}
+// swiftlint:enable convenience_type
+{% endif %}
 {% else %}
 // No string found
 {% endif %}

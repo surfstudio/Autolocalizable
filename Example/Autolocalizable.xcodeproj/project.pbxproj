@@ -314,15 +314,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Autolocalizable_Example/Pods-Autolocalizable_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Autolocalizable/Autolocalizable.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Autolocalizable.framework",
 			);
